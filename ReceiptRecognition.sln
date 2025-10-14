@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiptRecognition.API", "ReceiptRecognition.API\ReceiptRecognition.API.csproj", "{33D2610B-11A8-F439-A389-035FAACEFEFF}"
 EndProject
@@ -21,6 +21,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Readme.md = Readme.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F82B5D32-0D9D-4BC2-982E-EB5E6EE02785}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aspire", "Aspire", "{194BF5F8-32F7-420D-B430-5FC3A54397AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +65,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CBE90017-9BDC-4667-BFD2-263825B23FED} = {194BF5F8-32F7-420D-B430-5FC3A54397AC}
+		{A75B76B9-4964-B2B1-97FA-F521B68674B0} = {194BF5F8-32F7-420D-B430-5FC3A54397AC}
+		{9ECD51DC-DB83-47A9-9523-7CE2B9776E47} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{A00FAD47-3C02-43F1-9039-F2A32E02269A} = {F82B5D32-0D9D-4BC2-982E-EB5E6EE02785}
+		{15743ADD-17B7-467C-8EE2-F898EECF5D11} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DA12E7A-7491-4B6A-8AAC-46EDD5DD1084}

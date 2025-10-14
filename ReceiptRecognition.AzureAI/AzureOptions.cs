@@ -6,9 +6,9 @@ namespace ReceiptRecognition.AzureAI;
 
 public class AzureOptions
 {
-    public string Key { get; set; }
+    public string Key { get; set; } = "";
 
-    public string Endpoint { get; set;  }
+    public string Endpoint { get; set; } = "";
 }
 
 public class AzureOptionsSetup(IConfiguration configuration) : IConfigureOptions<AzureOptions>

@@ -5,8 +5,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace ReceiptRecognition.Lib.OllamaImplementation;
+namespace ReceiptRecognition.Ollama.DTOs;
 
+#pragma warning disable IDE1006
 public record OllamaResponse(string model,
         DateTime created_at,
         string response,
@@ -18,4 +19,6 @@ public record OllamaResponse(string model,
         long prompt_eval_duration,
         int eval_count,
         long eval_duration);
+
+#pragma warning restore IDE1006
 
