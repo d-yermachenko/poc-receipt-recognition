@@ -13,6 +13,10 @@ namespace ReceiptRecognition.Ollama.Services;
 
 internal class OllamaImageRecognitionService(IHttpClientFactory httpClientFactory, IOptions<PureRecognitionOptions> optionsShot, IReceiptSchemaProviderFactory schemaFactory, ILogger<OllamaImageRecognitionService> logger) : IReceiptRecognitionService
 {
+    private static readonly JsonSerializerOptions JsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
 
     public const string CompletionUrl = "/api/generate";
 
@@ -36,10 +40,7 @@ internal class OllamaImageRecognitionService(IHttpClientFactory httpClientFactor
             }
         };
 
-        JsonSerializerOptions jsonOptions = new()
-        {
-            PropertyNameCaseInsensitive = true
-        };
+        
         using HttpClient httpClient = httpClientFactory.CreateClient(nameof(OllamaImageRecognitionService));
         HttpResponseMessage result = await httpClient.PostAsync(CompletionUrl, request.ToHttpContent(), cancellationToken);
         string content = await result.Content.ReadAsStringAsync(cancellationToken);
@@ -48,10 +49,10 @@ internal class OllamaImageRecognitionService(IHttpClientFactory httpClientFactor
             logger.LogError("Unsuccesfull request to image2text model. Status code: {StatusCode} \n {content}", result.StatusCode, content);
             return null;
         }
-        OllamaResponse? response = JsonSerializer.Deserialize<OllamaResponse>(content, jsonOptions);
+        OllamaResponse? response = JsonSerializer.Deserialize<OllamaResponse>(content, JsonOptions);
         if (string.IsNullOrWhiteSpace(response?.response))
             return null;
-        ReceiptDto? receipt = JsonSerializer.Deserialize<ReceiptDto>(response.response, jsonOptions);
+        ReceiptDto? receipt = schemaProvider.SerializeToReceipt(response?.response);
         return receipt;
     }
 }

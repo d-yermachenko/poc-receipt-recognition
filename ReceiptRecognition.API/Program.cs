@@ -36,9 +36,9 @@ public class Program
 
         app.MapPost("/start-recognition", (HttpContext httpContext) =>
         {
-            string securityKey = httpContext.Request.Headers["secutity-key"];
+            /*string securityKey = httpContext.Request.Headers["secutity-key"];
             if (securityKey != "here is basic security key, its okey for value and of this endpoint")
-                return Results.Unauthorized();
+                return Results.Unauthorized();*/
 
             return Results.StatusCode(StatusCodes.Status501NotImplemented);
         })

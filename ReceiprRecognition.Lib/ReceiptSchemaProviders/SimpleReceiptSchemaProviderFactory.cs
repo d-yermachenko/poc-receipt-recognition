@@ -8,6 +8,9 @@ internal class SimpleReceiptSchemaProviderFactory : IReceiptSchemaProviderFactor
     {
         return receiptType switch
         {
+            SupportedReceiptType.Gas => new GasStationReceiptSchemaProvider(),
+            SupportedReceiptType.Restaurant => new RestaurantReceiptSchemaProvider(),
+            SupportedReceiptType.RetailMeal => new RetailReceiptSchemaProvider(),
             _ => new RetailReceiptSchemaProvider()
         };
     }

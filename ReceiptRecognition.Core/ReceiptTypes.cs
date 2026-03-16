@@ -13,6 +13,7 @@ public enum SupportedReceiptType
     Retail,
     RetailMeal,
     Restaurant,
+    Parking,
     Gas,
     TallRoad,
     EventOrTransportation,

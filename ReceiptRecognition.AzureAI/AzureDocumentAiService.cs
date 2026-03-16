@@ -12,8 +12,9 @@ public class AzureDocumentAiService(IOptions<AzureOptions> azureOptions) : IRece
 {
     private const string ReceiptModelName = "prebuilt-receipt";
 
+
     private AzureOptions AzureOptions => azureOptions.Value;
-    public async Task<ReceiptDto?> GetReceiptData(Stream imageStream, string imageMimeType, CultureInfo receiptCulture, SupportedReceiptType _, CancellationToken cancellationToken)
+    public async Task<ReceiptDto?> GetReceiptData(Stream imageStream, string imageMimeType, CultureInfo receiptCulture, SupportedReceiptType receiptType, CancellationToken cancellationToken)
     {
         AzureKeyCredential credential = new(AzureOptions.Key);
         DocumentIntelligenceClient client = new (new Uri(AzureOptions.Endpoint), credential);

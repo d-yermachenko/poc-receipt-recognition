@@ -4,7 +4,7 @@ using ReceiptRecognition.Core;
 
 namespace ReceiptRecognition.Ollama.ReceiptSchemaProviders;
 
-internal class RetailReceiptSchemaProvider : IReceiptSchemaProvider
+internal class ParkingReceiptSchemaProvider : IReceiptSchemaProvider
 {
 
     private static readonly string _ReceiptDocumentSchemaString = _ReceiptDocumentSchemaStringDraft4;
@@ -19,8 +19,7 @@ internal class RetailReceiptSchemaProvider : IReceiptSchemaProvider
         PropertyNameCaseInsensitive = true
     };
 
-    public  dynamic ReceiptFormat => JsonSerializer.Deserialize<dynamic>(_ReceiptDocumentSchemaString, _JsonSerializerOptions)!;
-
+    public dynamic ReceiptFormat =>  JsonSerializer.Deserialize<dynamic>(_ReceiptDocumentSchemaString, _JsonSerializerOptions)!;
 
     #region Schemas
     private const string _ReceiptDocumentSchemaStringDraft7 = """
@@ -402,22 +401,20 @@ internal class RetailReceiptSchemaProvider : IReceiptSchemaProvider
             "MerchantAddress",
             "PurchaseDate",
             "Total",
-            "Items",
-            "Taxes",
-            "Payments"
+            "Taxes"
           ]
         }
-
         """;
 
     public string GetDefaultPrompt(CultureInfo receiptCulture)
     {
-        return $"""
+        string defaultPrompt = $"""
         You are a strict receipt extraction engine. Extract fields and return ONLY compact JSON with no extra text.
 
         Rules:
         - Parse: MerchantName, MerchantAddress, PurchaseDate (ISO 8601), Currency (ISO 4217),
-          Tax, Total, PaymentMethod, and Items (Description, Quantity, UnitPrice, LineTotal).
+          Tax, Total, PaymentMethod, and Item (Description, Quantity, UnitPrice, LineTotal).
+        - Items' description is fuel type, Quantity is fuel volume in culture-specific units.
         - Amounts are numbers; use null if missing. Do not invent data.
         - If both date and time present, include date part in PurchaseDate; normalize to ISO 8601.
         - Respond with ONLY JSON.
@@ -426,18 +423,18 @@ internal class RetailReceiptSchemaProvider : IReceiptSchemaProvider
         - Quantity is usually near the item, can be in the column or have a suffix or prefix "X".
         - List of items usually follows the header of receipt and preceeds taxes.
         - Culture is indicated as {receiptCulture.EnglishName}.
-        - Receipt kind is Retail.
+        - Receipt kind is Gas station ticket.
         """;
+        return defaultPrompt;
+
     }
-
-
-    #endregion
 
     public ReceiptDto? SerializeToReceipt(string content)
     {
         
         return JsonSerializer.Deserialize<ReceiptDto?>(content, JsonOptions);
     }
+    #endregion
 
 
 }
