@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Aspire/">
+    <Project Path="Aspire/ReceiptRecognition.AppHost/ReceiptRecognition.AppHost.csproj" />
+    <Project Path="Aspire/ReceiptRecognition.ServiceDefaults/ReceiptRecognition.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="Infrastructure/ReceiptRecognition.Ollama/ReceiptRecognition.Ollama.csproj" />
+    <Project Path="Infrastructure/ReceiptRecognition.AzureAI/ReceiptRecognition.AzureAI.csproj" />
+    <Project Path="Infrastructure/ReceiptRecognition.OllamaSharp/ReceiptRecognition.OllamaSharp.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="Readme.md" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="ReceiptRecognition.Tests/ReceiptRecognition.Tests.csproj" />
+  </Folder>
+  <Project Path="ReceiptRecognition.Core/ReceiptRecognition.Core.csproj" />
+</Solution>

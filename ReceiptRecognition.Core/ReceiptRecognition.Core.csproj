@@ -1,13 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\ReceiptRecognition.AppHost\ReceiptRecognition.AppHost.csproj" />
+    <ProjectReference Include="..\Aspire\ReceiptRecognition.AppHost\ReceiptRecognition.AppHost.csproj" />
   </ItemGroup>
-
 </Project>

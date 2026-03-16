@@ -1,3 +1,5 @@
+using Aspire.Hosting;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 var ollama = builder
@@ -9,8 +11,8 @@ var ollama = builder
 ollama.AddModel("");
 ollama.AddModel("");*/
 
-builder
+/*builder
     .AddProject<Projects.ReceiptRecognition_API>("receiptrecognition-api")
-    .WaitForStart(ollama);
+    .WaitForStart(ollama);*/
 
 builder.Build().Run();

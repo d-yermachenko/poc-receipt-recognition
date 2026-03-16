@@ -1,33 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <UserSecretsId>fc24d3df-779a-489c-871e-10bb9965a9f2</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="6.0.4">
+    <PackageReference Include="coverlet.collector" >
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.9" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.9" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.9" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
-    <PackageReference Include="xunit" Version="2.9.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions"  />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json"  />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets"  />
+    <PackageReference Include="Microsoft.Extensions.Logging"  />
+    <PackageReference Include="Microsoft.NET.Test.Sdk"  />
+    <PackageReference Include="xunit"  />
+    <PackageReference Include="xunit.runner.visualstudio">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ReceiprRecognition.Lib\ReceiptRecognition.Ollama.csproj" />
-    <ProjectReference Include="..\ReceiptRecognition.AzureAI\ReceiptRecognition.AzureAI.csproj" />
+    <ProjectReference Include="..\Infrastructure\ReceiptRecognition.AzureAI\ReceiptRecognition.AzureAI.csproj" />
+    <ProjectReference Include="..\Infrastructure\ReceiptRecognition.Ollama\ReceiptRecognition.Ollama.csproj" />
   </ItemGroup>
 
   <ItemGroup>
