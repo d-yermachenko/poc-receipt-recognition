@@ -10,7 +10,7 @@ using ReceiptRecognition.Ollama.Options;
 using ReceiptRecognition.Tests.Receipts;
 using ReceiptRecognition.OllamaSharp;
 
-namespace ReceiptRecognition.Tests.Ollama;
+namespace ReceiptRecognition.Tests.OllamaSharp;
 
 internal static class OllamaSharpServiceContainerProvider
 {
