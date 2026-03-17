@@ -4,14 +4,16 @@ using Scalar;
 using Scalar.AspNetCore;
 using Microsoft.Extensions.Configuration;
 using ReceiptRecognition.API.Endpoints;
+using ReceiptRecognition.OllamaSharp;
 
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAntiforgery();
 
 builder.AddServiceDefaults();
 
 builder.Services.AddLogging();
-builder.Services.AddAntiforgery();
+
 builder.Configuration
     .AddEnvironmentVariables()
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
@@ -20,11 +22,10 @@ builder.Configuration
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddProblemDetails();
-
+builder.Services.AddOllamaSharpServices();
 
 var app = builder.Build();
 
-app.UseAntiforgery();
 app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
@@ -40,6 +41,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapRecognitionEndPoints();
+app.UseAntiforgery();
 app.UseExceptionHandler();
 
 
