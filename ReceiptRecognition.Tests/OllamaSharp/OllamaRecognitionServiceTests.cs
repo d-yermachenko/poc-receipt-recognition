@@ -5,7 +5,7 @@ using ReceiptRecognition.Core;
 using ReceiptRecognition.Ollama;
 using ReceiptRecognition.Tests.Receipts;
 
-namespace ReceiptRecognition.Tests.Ollama;
+namespace ReceiptRecognition.Tests.OllamaSharp;
 
 public class OllamaSharpRecognitionServiceTests
 {
