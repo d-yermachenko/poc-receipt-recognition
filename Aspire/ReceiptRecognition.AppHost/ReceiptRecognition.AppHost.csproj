@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\ReceiptRecognition.API\ReceiptRecognition.API.csproj" />
+  </ItemGroup>
+
 </Project>

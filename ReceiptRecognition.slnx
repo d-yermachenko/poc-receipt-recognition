@@ -14,5 +14,6 @@
   <Folder Name="/Tests/">
     <Project Path="ReceiptRecognition.Tests/ReceiptRecognition.Tests.csproj" />
   </Folder>
+  <Project Path="ReceiptRecognition.API/ReceiptRecognition.API.csproj" />
   <Project Path="ReceiptRecognition.Core/ReceiptRecognition.Core.csproj" />
 </Solution>
