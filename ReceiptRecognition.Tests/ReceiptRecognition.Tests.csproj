@@ -6,16 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" >
+    <PackageReference Include="coverlet.collector">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions"  />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json"  />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets"  />
-    <PackageReference Include="Microsoft.Extensions.Logging"  />
-    <PackageReference Include="Microsoft.NET.Test.Sdk"  />
-    <PackageReference Include="xunit"  />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\ReceiptRecognition.AzureAI\ReceiptRecognition.AzureAI.csproj" />
+    <ProjectReference Include="..\Infrastructure\ReceiptRecognition.OllamaSharp\ReceiptRecognition.OllamaSharp.csproj" />
     <ProjectReference Include="..\Infrastructure\ReceiptRecognition.Ollama\ReceiptRecognition.Ollama.csproj" />
   </ItemGroup>
 
