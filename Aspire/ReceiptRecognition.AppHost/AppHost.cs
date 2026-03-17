@@ -3,10 +3,15 @@ using Aspire.Hosting;
 var builder = DistributedApplication.CreateBuilder(args);
 
 var ollama = builder
-    .AddExternalService("ollama", "http://192.168.0.132:11434");
+    .AddExternalService("ollama", "http://192.168.0.132:11434")
+    .WithHttpHealthCheck("/health"); 
+
+var receiptRecognitionApi = builder
+    .AddProject<Projects.ReceiptRecognition_API>("receiptrecognition-api")
+    .WaitForStart(ollama);
 
 /*var ollama = builder.AddOllama("ollama")
-    .WithGPUSupport();
+   .WithGPUSupport();
 
 ollama.AddModel("");
 ollama.AddModel("");*/

@@ -1,8 +1,5 @@
 ﻿using System.Globalization;
 using System.Text.Json;
-using System.Text.RegularExpressions;
-using Google.Protobuf.WellKnownTypes;
-using k8s;
 using ReceiptRecognition.Core;
 
 namespace ReceiptRecognition.Ollama.ReceiptSchemaProviders;
