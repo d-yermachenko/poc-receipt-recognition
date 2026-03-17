@@ -5,6 +5,9 @@ using Scalar.AspNetCore;
 using Microsoft.Extensions.Configuration;
 using ReceiptRecognition.API.Endpoints;
 using ReceiptRecognition.OllamaSharp;
+using StackExchange.Redis;
+using ReceiptRecognition.API.Application.Services;
+using ReceiptRecognition.API.Application;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,8 +25,14 @@ builder.Configuration
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddProblemDetails();
-builder.Services.AddOllamaSharpServices();
 
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    string redisConnectionString = configuration.GetConnectionString("recognitionTasksStorage") ?? throw new InvalidOperationException("Redis connection string is not configured.");
+    return ConnectionMultiplexer.Connect(redisConnectionString);
+});
+builder.Services.AddApplicationServices();
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
