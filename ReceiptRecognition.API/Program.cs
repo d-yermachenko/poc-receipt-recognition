@@ -12,6 +12,7 @@ using ReceiptRecognition.API.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAntiforgery();
+builder.Services.AddCors();
 
 builder.AddServiceDefaults();
 
@@ -48,7 +49,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+if (app.Environment.IsDevelopment())
+    app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.MapRecognitionEndPoints();
 app.UseAntiforgery();
 app.UseExceptionHandler();

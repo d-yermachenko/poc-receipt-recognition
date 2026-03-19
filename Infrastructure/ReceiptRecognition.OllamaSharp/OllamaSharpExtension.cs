@@ -6,6 +6,7 @@ using ReceiptRecognition.Core;
 using OllamaSharp.Tools ;
 using OllamaSharp;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace ReceiptRecognition.OllamaSharp;
 
@@ -13,7 +14,7 @@ public static class OllamaSharpExtension
 {
     extension(IServiceCollection services)
     {
-        public IServiceCollection AddOllamaSharpServices()
+        public IServiceCollection AddOllamaSharpServices(ServiceLifetime serviceLifetime)
         {
             services.ConfigureOptions<OllamaSharpOptionsSetup>();
             services.AddHttpClient<OllamaApiClient>((sp, cli) =>
@@ -29,8 +30,8 @@ public static class OllamaSharpExtension
                 OllamaSharpOptions options = sp.GetRequiredService<IOptions<OllamaSharpOptions>>().Value;
                 var client= new OllamaApiClient(ollamaHttpClient, options.OllamaModelName);
                 return client;
-            });
-            services.AddSingleton<IReceiptRecognitionService, OlamaSharpRecognitionService>();
+            }, serviceLifetime);
+            services.Add(new ServiceDescriptor(typeof(IReceiptRecognitionService), typeof(OlamaSharpRecognitionService), serviceLifetime));
             return services;
         }
         

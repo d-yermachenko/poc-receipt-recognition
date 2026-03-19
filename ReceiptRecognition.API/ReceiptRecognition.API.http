@@ -1,6 +1,28 @@
-@ReceiptRecognition.API_HostAddress = http://localhost:5077
+@ReceiptRecognition_API_HostAddress = https://localhost:7188
 
-GET {{ReceiptRecognition.API_HostAddress}}/weatherforecast/
+### Recognize Receipt (POST /recognize)
+# @name upload
+POST {{ReceiptRecognition_API_HostAddress}}/recognize
+Accept: multipart/form-data
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"
+
+@P_20260317_012510.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="receiptType"
+
+2
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+
+###
+
+### Get Recognition Status (GET /recognitionStatus/{jobId})
+GET {{ReceiptRecognition_API_HostAddress}}/recognitionStatus/{{upload.response.body.$.token jobId}}
 Accept: application/json
 
 ###

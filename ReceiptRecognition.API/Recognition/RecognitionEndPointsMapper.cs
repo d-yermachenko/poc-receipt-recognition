@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
-using ReceiptRecognition.API.Application.Services;
+using ReceiptRecognition.API.Application.Abstraction;
+using ReceiptRecognition.API.Application.Data;
 using ReceiptRecognition.Core;
 
 namespace ReceiptRecognition.API.Endpoints;

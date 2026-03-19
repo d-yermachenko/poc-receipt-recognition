@@ -8,7 +8,7 @@ namespace ReceiptRecognition.OllamaSharp;
 
 public class OllamaSharpOptions
 {
-    public string OllamaApiUrl { get; set; } = "http://192.168.1.1:11434";
+    public string OllamaApiUrl { get; set; } = "http://192.168.0.132:11434";
 
     public string OllamaModelName { get; set; } = "llama3.2-vision:latest";
 

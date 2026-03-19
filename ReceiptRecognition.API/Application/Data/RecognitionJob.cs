@@ -1,9 +1,10 @@
 ﻿using System.Globalization;
+using ReceiptRecognition.API.Application.Abstraction;
 using ReceiptRecognition.Core;
 
-namespace ReceiptRecognition.API.Application.Services;
+namespace ReceiptRecognition.API.Application.Data;
 
-public record RecognitionJob(Guid JobId, ReadOnlyMemory<byte> ImageStream, string ImageMimeType, CultureInfo ReceiptCulture, SupportedReceiptType ReceiptType)
+public record RecognitionJob(Guid JobId, ReadOnlyMemory<byte> ImageStream, string ImageMimeType, CultureInfo ReceiptCulture, SupportedReceiptType ReceiptType) : AbstractJob(JobId)
 {
     public RecognitionJobStatus CreateStatus()
     {
